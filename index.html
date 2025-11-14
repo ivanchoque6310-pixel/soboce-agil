@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOBOCE ÁGIL - Cemento de Fraguado Rápido</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --azul-confianza: #0056a3;
+            --naranja-dinamico: #ff6b00;
+            --blanco-pureza: #ffffff;
+            --gris-claro: #f5f5f5;
+            --gris-oscuro: #333333;
+        }
+        
+        body {
+            background-color: var(--gris-claro);
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--azul-confianza);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--azul-confianza), var(--naranja-dinamico));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--naranja-dinamico);
+            color: var(--blanco-pureza);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e55e00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Encabezado */
+        header {
+            background-color: var(--azul-confianza);
+            color: var(--blanco-pureza);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .isotipo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--naranja-dinamico);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .rayo {
+            color: var(--blanco-pureza);
+            font-size: 24px;
+            transform: rotate(15deg);
+        }
+        
+        .logotipo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .soboce {
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-size: 24px;
+            color: var(--blanco-pureza);
+            line-height: 1;
+        }
+        
+        .agil {
+            font-family: Arial, sans-serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--naranja-dinamico);
+            line-height: 1;
+            margin-top: -3px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--blanco-pureza);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Sección Hero */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 163, 0.8), rgba(0, 86, 163, 0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco-pureza);
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .eslogan {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 24px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--naranja-dinamico);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .hero .descriptor {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+        
+        /* Sección Blog Personal */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: var(--blanco-pureza);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--azul-confianza);
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .card-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .card-content ul li {
+            margin-bottom: 8px;
+        }
+        
+        .read-more {
+            color: var(--naranja-dinamico);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        .welcome-section {
+            background-color: var(--blanco-pureza);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-section h3 {
+            color: var(--azul-confianza);
+            margin-bottom: 15px;
+        }
+        
+        .welcome-section p {
+            margin-bottom: 15px;
+        }
+        
+        /* Sección Marketing */
+        .marketing-highlights {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .marketing-card {
+            flex: 1;
+            background-color: var(--blanco-pureza);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .marketing-card i {
+            font-size: 40px;
+            color: var(--naranja-dinamico);
+            margin-bottom: 20px;
+        }
+        
+        .marketing-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--azul-confianza);
+        }
+        
+        /* Sección Empresa */
+        .empresa-section {
+            background-color: var(--azul-confianza);
+            color: var(--blanco-pureza);
+        }
+        
+        .empresa-section .section-title h2 {
+            color: var(--blanco-pureza);
+        }
+        
+        .empresa-section .section-title h2:after {
+            background: linear-gradient(to right, var(--naranja-dinamico), #ffcc00);
+        }
+        
+        .empresa-info {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .empresa-logo {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .empresa-logo .logo-grande {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .empresa-logo .isotipo-grande {
+            width: 100px;
+            height: 100px;
+            background-color: var(--naranja-dinamico);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .empresa-logo .rayo-grande {
+            color: var(--blanco-pureza);
+            font-size: 48px;
+            transform: rotate(15deg);
+        }
+        
+        .empresa-details {
+            flex: 2;
+        }
+        
+        .empresa-details h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .empresa-details p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        /* Sección Producto Innovador */
+        .producto-section {
+            background-color: var(--gris-claro);
+        }
+        
+        .producto-showcase {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .producto-image {
+            flex: 1;
+        }
+        
+        .producto-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .producto-details {
+            flex: 1;
+        }
+        
+        .producto-details h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--azul-confianza);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--naranja-dinamico);
+            font-weight: bold;
+        }
+        
+        /* Sección Identidad Visual */
+        .identidad-section {
+            background-color: var(--blanco-pureza);
+        }
+        
+        .identidad-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .identidad-card {
+            background-color: var(--gris-claro);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .color-box {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .azul {
+            background-color: var(--azul-confianza);
+        }
+        
+        .naranja {
+            background-color: var(--naranja-dinamico);
+        }
+        
+        .blanco {
+            background-color: var(--blanco-pureza);
+            border: 1px solid #ddd;
+            color: #333;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: var(--azul-confianza);
+            color: var(--blanco-pureza);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--naranja-dinamico);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--naranja-dinamico);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--naranja-dinamico);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .empresa-info, .producto-showcase {
+                flex-direction: column;
+            }
+            
+            .marketing-highlights {
+                flex-direction: column;
+            }
+            
+            .identidad-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="isotipo">
+                    <div class="rayo">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                </div>
+                <div class="logotipo">
+                    <div class="soboce">SOBOCE</div>
+                    <div class="agil">Ágil</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#personal">Blog Personal</a></li>
+                    <li><a href="#marketing">Marketing</a></li>
+                    <li><a href="#empresa">Empresa</a></li>
+                    <li><a href="#producto">Producto Innovador</a></li>
+                    <li><a href="#identidad">Identidad Visual</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>SOBOCE <span style="font-style: italic; color: #ff6b00;">ÁGIL</span></h1>
+            <p class="eslogan">"Tiempo que vale, construcción que perdura"</p>
+            <p class="descriptor">Cemento de fraguado rápido para construcción eficiente y responsable</p>
+            <a href="#producto" class="btn">Descubre el producto</a>
+        </div>
+    </section>
+
+    <!-- Blog Personal -->
+    <section id="personal" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Blog Personal</h2>
+            </div>
+            <div class="welcome-section">
+                <h3>¡Hola, bienvenido@s a este Blog!</h3>
+                <p>Soy <strong>IVAN</strong>, estudiante universitario de la materia <strong>MERCADOTECNIA I</strong> de la carrera Ingenieria Comercial de la Universidad Tecnológica Boliviana (UTB).</p>
+                <p>Apasionado por la gestión empresarial, el desarrollo del talento humano y la mejora continua en las organizaciones. En este espacio comparto experiencias, consejos y aprendizajes.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proyecto de construcción">
+                    </div>
+                    <div class="card-content">
+                        <h3>INTRODUCCIÓN</h3>
+                        <p>En este blog exploraremos el fascinante mundo del marketing en la industria de la construcción, específicamente enfocado en el lanzamiento de SOBOCE ÁGIL, un cemento de fraguado rápido que está revolucionando el sector.</p> 
+                        <p>Este tema es crucial porque representa cómo la innovación en materiales de construcción puede transformar la eficiencia en obras y proyectos, optimizando tiempos y recursos mientras se mantienen los más altos estándares de calidad.</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Innovación en construcción">
+                    </div>
+                    <div class="card-content">
+                        <h3>Analizar las estrategias de marketing implementadas para el lanzamiento de SOBOCE ÁGIL</h3>
+                        <ul>
+                            <li>Examinar las tácticas de marketing digital y tradicional utilizadas</li>
+                            <li>Evaluar el posicionamiento en el mercado de la construcción</li>
+                            <li>Identificar los canales de distribución y comunicación más efectivos</li>
+                            <li>Analizar la segmentación del público objetivo específico</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sostenibilidad en construcción">
+                    </div>
+                    <div class="card-content">
+                        <h3>Comprender el impacto de la innovación en materiales de construcción</h3>
+                        <ul>
+                            <li>Estudiar cómo SOBOCE ÁGIL genera ventajas competitivas sostenibles</li>
+                            <li>Analizar la relación entre innovación tecnológica y aceptación en el mercado</li>
+                            <li>Evaluar la respuesta del sector construcción frente a productos innovadores</li>
+                            <li>Identificar factores clave para el éxito comercial de nuevos materiales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tema de Marketing -->
+    <section id="marketing" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Estrategias de Marketing</h2>
+            </div>
+            <div class="marketing-highlights">
+                <div class="marketing-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Público Objetivo</h3>
+                    <p>Constructores profesionales, albañiles y contratistas que valoran tiempo, eficiencia, calidad y confianza en sus proyectos.</p>
+                </div>
+                <div class="marketing-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Posicionamiento</h3>
+                    <p>El cemento de fraguado rápido que no compromete la calidad, respaldado por la tradición y confianza de SOBOCE.</p>
+                </div>
+                <div class="marketing-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Estrategia Digital</h3>
+                    <p>Contenido visual que muestra la rapidez de fraguado y la durabilidad del producto en diferentes aplicaciones constructivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empresa que eligió el grupo -->
+    <section id="empresa" class="section empresa-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>SOBOCE - Nuestra Empresa</h2>
+            </div>
+            <div class="empresa-info">
+                <div class="empresa-logo">
+                    <div class="logo-grande">
+                        <div class="isotipo-grande">
+                            <div class="rayo-grande">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                        </div>
+                        <div class="logotipo">
+                            <div class="soboce">SOBOCE</div>
+                            <div class="agil">Ágil</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="empresa-details">
+                    <h3>Sociedad Boliviana de Cemento</h3>
+                    <p><strong>Sector:</strong> Industria Cementera y Construcción</p>
+                    <p><strong>Año de fundación:</strong> 1925</p>
+                    <p><strong>Ubicación:</strong> Bolivia, con presencia nacional</p>
+                    <p><strong>Misión:</strong> Producir y comercializar materiales de construcción de calidad que contribuyan al desarrollo del país.</p>
+                    <p><strong>Visión:</strong> Ser la empresa líder en soluciones constructivas innovadoras y sostenibles en Bolivia.</p>
+                    <p><strong>Valores:</strong> Calidad, innovación, responsabilidad social y sostenibilidad.</p>
+                    <p>SOBOCE cuenta con casi un siglo de experiencia en la producción de cemento y materiales de construcción, siendo un pilar fundamental del desarrollo infraestructural de Bolivia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Producto Innovador -->
+    <section id="producto" class="section producto-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Producto Innovador</h2>
+            </div>
+            <div class="producto-showcase">
+                <div class="producto-image">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cemento SOBOCE ÁGIL">
+                </div>
+                <div class="producto-details">
+                    <h3>SOBOCE ÁGIL - Cemento de Fraguado Rápido</h3>
+                    <p>SOBOCE ÁGIL es un cemento de fraguado rápido especialmente formulado para proyectos que requieren eficiencia en tiempos de construcción sin comprometer la calidad y durabilidad del resultado final.</p>
+                    <ul class="features-list">
+                        <li>Fraguado rápido que reduce tiempos de construcción hasta en un 40%</li>
+                        <li>Alta resistencia inicial y final</li>
+                        <li>Excelente trabajabilidad y adherencia</li>
+                        <li>Ideal para reparaciones, cimentaciones y proyectos con plazos ajustados</li>
+                        <li>Compatibilidad con aditivos y otros materiales de construcción</li>
+                        <li>Producción sostenible con menor huella de carbono</li>
+                    </ul>
+                    <p>Este producto representa la perfecta combinación entre la tradición de calidad de SOBOCE y la innovación necesaria para las construcciones modernas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Identidad Visual -->
+    <section id="identidad" class="section identidad-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Identidad Visual</h2>
+            </div>
+            <div class="identidad-grid">
+                <div class="identidad-card">
+                    <div class="color-box azul">AZUL CONFIANZA</div>
+                    <h3>Confianza y Profesionalismo</h3>
+                    <p>Representa la solidez, tradición y confianza que caracteriza a SOBOCE después de casi un siglo en el mercado.</p>
+                </div>
+                <div class="identidad-card">
+                    <div class="color-box naranja">NARANJA DINÁMICO</div>
+                    <h3>Velocidad y Energía</h3>
+                    <p>Simboliza la rapidez de fraguado, la innovación y el dinamismo del nuevo producto ÁGIL.</p>
+                </div>
+                <div class="identidad-card">
+                    <div class="color-box blanco">BLANCO PUREZA</div>
+                    <h3>Claridad y Eficiencia</h3>
+                    <p>Representa la pureza del producto, la transparencia en los procesos y la eficiencia constructiva.</p>
+                </div>
+                <div class="identidad-card">
+                    <h3>Tipografías</h3>
+                    <p style="font-family: 'Arial Black', Arial, sans-serif; font-size: 24px; color: var(--azul-confianza); margin: 15px 0;">SOBOCE - Arial Black</p>
+                    <p style="font-family: Arial, sans-serif; font-style: italic; font-size: 20px; color: var(--naranja-dinamico); margin: 15px 0;">Ágil - Arial Italic</p>
+                    <p style="font-family: 'Times New Roman', serif; font-style: italic; font-size: 18px; color: var(--naranja-dinamico); margin: 15px 0;">"Tiempo que vale, construcción que perdura" - Times New Roman Italic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SOBOCE ÁGIL</h3>
+                    <p>Cemento de fraguado rápido para construcción eficiente y responsable.</p>
+                    <p>"Tiempo que vale, construcción que perdura"</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <a href="#personal">Blog Personal</a>
+                    <a href="#marketing">Marketing</a>
+                    <a href="#empresa">Empresa</a>
+                    <a href="#producto">Producto Innovador</a>
+                    <a href="#identidad">Identidad Visual</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: info@soboce-agil.com</p>
+                    <p>Teléfono: +591 2 123 4567</p>
+                    <p>Dirección: Av. Industrial, Santa Cruz, Bolivia</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 SOBOCE ÁGIL. Todos los derechos reservados. | Sociedad Boliviana de Cemento</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
